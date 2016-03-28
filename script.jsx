@@ -1,7 +1,14 @@
 var Hello = React.createClass({
+        buy: function(){
+               alert("you bought an iphone!");
+             },      
+
 	render: function() {
 		return (
-                    <h2> This is my first react tryout! let's have some fun. </h2>
+                    <div>
+                      <h2> iphone - $ 300</h2>
+                      <button onClick={this.buy}> buy! </button>
+                    </div>
                   );
 	}
 });

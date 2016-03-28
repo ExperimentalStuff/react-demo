@@ -1,11 +1,24 @@
 var Hello = React.createClass({
-	render: function () {
-		return React.createElement(
-			"h2",
-			null,
-			" This is my first react tryout! let's have some fun. "
-		);
-	}
+  buy: function () {
+    alert("you bought an iphone!");
+  },
+
+  render: function () {
+    return React.createElement(
+      "div",
+      null,
+      React.createElement(
+        "h2",
+        null,
+        " iphone - $ 300"
+      ),
+      React.createElement(
+        "button",
+        { onClick: this.buy },
+        " buy! "
+      )
+    );
+  }
 });
 
 React.render(React.createElement(Hello, null), document.getElementById("root"));
