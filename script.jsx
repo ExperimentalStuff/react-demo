@@ -1,6 +1,8 @@
 var Hello = React.createClass({
 	render: function() {
-		return ();
+		return (
+                    <h2> This is my first react tryout! let's have some fun. </h2>
+                  );
 	}
 });
 
