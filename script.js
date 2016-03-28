@@ -1,4 +1,4 @@
-var Hello = React.createClass({
+var Product = React.createClass({
   getInitialState: function () {
     return { qty: 0 };
   },
@@ -33,5 +33,32 @@ var Hello = React.createClass({
   }
 });
 
-React.render(React.createElement(Hello, null), document.getElementById("root"));
+var Total = React.createClass({
+  render: function () {
+    return React.createElement(
+      "div",
+      null,
+      React.createElement(
+        "h3",
+        null,
+        " Total Cash: "
+      )
+    );
+  }
+});
+
+var ProductList = React.createClass({
+  render: function () {
+    return React.createElement(
+      "div",
+      null,
+      React.createElement(Product, null),
+      React.createElement(Product, null),
+      React.createElement(Product, null),
+      React.createElement(Total, null)
+    );
+  }
+});
+
+React.render(React.createElement(ProductList, null), document.getElementById("root"));
 
