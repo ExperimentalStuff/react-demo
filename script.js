@@ -5,7 +5,7 @@ var Product = React.createClass({
 
   buy: function () {
     this.setState({ qty: this.state.qty + 1 });
-    alert("you bought an iphone!");
+    alert("you bought a phone!");
   },
 
   render: function () {
@@ -15,7 +15,10 @@ var Product = React.createClass({
       React.createElement(
         "h2",
         null,
-        " iphone - $ 300"
+        " ",
+        this.props.name,
+        "- $",
+        this.props.price
       ),
       React.createElement(
         "button",
@@ -47,14 +50,16 @@ var Total = React.createClass({
   }
 });
 
+// pass data to component: use html data //
+// use data passed in component: {this.props.[data-name]} //
 var ProductList = React.createClass({
   render: function () {
     return React.createElement(
       "div",
       null,
-      React.createElement(Product, null),
-      React.createElement(Product, null),
-      React.createElement(Product, null),
+      React.createElement(Product, { name: "Iphone", price: "300" }),
+      React.createElement(Product, { name: "Zen", price: "200" }),
+      React.createElement(Product, { name: "Nokia", price: "20" }),
       React.createElement(Total, null)
     );
   }

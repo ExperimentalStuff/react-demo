@@ -5,13 +5,13 @@ var Product = React.createClass({
 
   buy: function(){
    this.setState({qty: this.state.qty + 1});
-   alert("you bought an iphone!");
+   alert("you bought a phone!");
   },      
 
   render: function() {
     return (
       <div>
-        <h2> iphone - $ 300</h2>
+        <h2> {this.props.name}- ${this.props.price}</h2>
         <button onClick={this.buy}> buy! </button>
         <h3> Qty: {this.state.qty} item(s)</h3>
       </div>
@@ -29,13 +29,15 @@ var Total = React.createClass({
   }
 });
 
+// pass data to component: use html data //
+// use data passed in component: {this.props.[data-name]} //
 var ProductList = React.createClass({
   render: function() {
     return (
         <div>
-          <Product/>
-          <Product/>
-          <Product/>
+          <Product name="Iphone" price="300"/>
+          <Product name="Zen" price="200"/>
+          <Product name="Nokia" price="20"/>
           <Total/>
         </div>
       );
