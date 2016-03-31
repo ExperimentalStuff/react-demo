@@ -14,32 +14,32 @@ var Product = React.createClass({
 
   render: function () {
     return React.createElement(
-      "div",
+      'div',
       null,
       React.createElement(
-        "h2",
+        'h2',
         null,
-        " ",
+        ' ',
         this.props.name,
-        "- $",
+        '- $',
         this.props.price
       ),
       React.createElement(
-        "button",
+        'button',
         { onClick: this.buy },
-        " buy! "
+        ' buy! '
       ),
       React.createElement(
-        "button",
+        'button',
         { onClick: this.show },
-        " show "
+        ' show '
       ),
       React.createElement(
-        "h3",
+        'h3',
         null,
-        " Qty: ",
+        ' Qty: ',
         this.state.qty,
-        " item(s)"
+        ' item(s)'
       )
     );
   }
@@ -48,15 +48,42 @@ var Product = React.createClass({
 var Total = React.createClass({
   render: function () {
     return React.createElement(
-      "div",
+      'div',
       null,
       React.createElement(
-        "h3",
+        'h3',
         null,
-        " Total Cash: $",
+        ' Total Cash: $',
         this.props.total,
-        " "
+        ' '
       )
+    );
+  }
+});
+
+var ProdictForm = React.createClass({
+  submit: function (e) {
+    e.preventDefault();
+    alert('name: ' + this.refs.name.value + ' - $' + this.refs.price.value);
+
+    this.refs.name.value = '';
+    this.refs.price.value = '';
+  },
+  render: function () {
+    return React.createElement(
+      'form',
+      null,
+      React.createElement('input', { type: 'text', placeholder: 'Product Name', ref: 'name' }),
+      ' -',
+      React.createElement('input', { type: 'text', placeholder: 'Product Price', ref: 'price' }),
+      React.createElement('br', null),
+      React.createElement('br', null),
+      React.createElement(
+        'button',
+        { onClick: this.submit },
+        'Create Product'
+      ),
+      React.createElement('hr', null)
     );
   }
 });
@@ -88,8 +115,9 @@ var ProductList = React.createClass({
     });
 
     return React.createElement(
-      "div",
+      'div',
       null,
+      React.createElement(ProdictForm, null),
       products,
       React.createElement(Total, { total: this.state.total })
     );

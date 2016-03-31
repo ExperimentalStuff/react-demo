@@ -34,6 +34,27 @@ var Total = React.createClass({
   }
 });
 
+var ProdictForm = React.createClass({
+  submit: function(e){
+    e.preventDefault();
+    alert('name: ' + this.refs.name.value + ' - $' + this.refs.price.value);
+
+    this.refs.name.value = '';
+    this.refs.price.value = '';
+  },
+  render: function(){
+    return (
+      <form>
+        <input type="text" placeholder="Product Name" ref="name"/> - 
+        <input type="text" placeholder="Product Price" ref="price"/>
+        <br/><br/>
+        <button onClick={this.submit}>Create Product</button>
+        <hr/>
+      </form>
+    );
+  }
+});
+
 // pass data to component: use html data //
 // use data passed in component: {this.props.[data-name]} //
 var ProductList = React.createClass({
@@ -68,6 +89,7 @@ var ProductList = React.createClass({
 
     return (
         <div>
+          <ProdictForm/>
           {products}
           <Total total={this.state.total}/>
         </div>
