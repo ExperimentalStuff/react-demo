@@ -61,10 +61,16 @@ var Total = React.createClass({
   }
 });
 
-var ProdictForm = React.createClass({
+var ProductForm = React.createClass({
   submit: function (e) {
     e.preventDefault();
-    alert('name: ' + this.refs.name.value + ' - $' + this.refs.price.value);
+
+    var product = {
+      name: this.refs.name.value,
+      price: parseInt(this.refs.price.value)
+    };
+
+    this.props.handleCreate(product);
 
     this.refs.name.value = '';
     this.refs.price.value = '';
@@ -98,6 +104,11 @@ var ProductList = React.createClass({
       productList: [{ name: "Android", price: 200 }, { name: "Iphone", price: 300 }, { name: "Nokia", price: 20 }]
     };
   },
+  createProduct: function (product) {
+    this.setState({
+      productList: this.state.productList.concat(product)
+    });
+  },
   calculateTotal: function (price) {
     this.setState({ total: this.state.total + price });
   },
@@ -117,7 +128,7 @@ var ProductList = React.createClass({
     return React.createElement(
       'div',
       null,
-      React.createElement(ProdictForm, null),
+      React.createElement(ProductForm, { handleCreate: this.createProduct }),
       products,
       React.createElement(Total, { total: this.state.total })
     );
